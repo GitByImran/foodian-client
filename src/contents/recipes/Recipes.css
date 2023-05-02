@@ -1,0 +1,13 @@
+.all-recipe {
+  flex: 1 0 0%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.chef-image {
+  max-height: 200px;
+  object-fit: cover;
+}
+.chef-info p {
+  color: #555555;
+}

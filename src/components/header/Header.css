@@ -1,0 +1,7 @@
+.nav-menu {
+  color: #000;
+  list-style: none;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: capitalize;
+}
