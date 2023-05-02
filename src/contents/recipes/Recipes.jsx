@@ -51,3 +51,7 @@ const Recipes = () => {
 };
 
 export default Recipes;
+
+
+// https://i.ibb.co/Cw2NZ6q/image.png // for about page
+// https://i.ibb.co/T2SpZd3/vegetables-set-left-black-slate.jpg //feedback pagej
