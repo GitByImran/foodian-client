@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/home/Home";
 import Blog from "./components/blog/Blog";
 import Contact from "./components/contact/Contact";
+import Details from "./contents/recipe-details/Details";
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("/chefs.json"),
+        loader: () =>
+          fetch("https://chef-recipe-hunter-server-gitbyimran.vercel.app/chef"),
       },
       {
         path: "blog",
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "recipe/:id",
+        element: <Details />,
+        loader: ({ params }) =>
+          fetch(
+            `https://chef-recipe-hunter-server-gitbyimran.vercel.app/recipe/${params.id}`
+          ),
       },
     ],
   },

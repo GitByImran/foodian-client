@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../header/Header";
+import Footer from "../footer/Footer";
 import { Outlet } from "react-router-dom";
 
 const StaticRoot = () => {
@@ -7,6 +8,7 @@ const StaticRoot = () => {
     <div>
       <Header></Header>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };
