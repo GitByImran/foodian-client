@@ -88,12 +88,7 @@ const Register = () => {
                 </Form.Group>
               </Form.Group>
 
-              <Button
-                onClick={handleAfterReg}
-                variant="primary"
-                disabled={!accept}
-                type="submit"
-              >
+              <Button variant="primary" disabled={!accept} type="submit">
                 Register
               </Button>
 

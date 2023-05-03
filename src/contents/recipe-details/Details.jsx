@@ -1,18 +1,19 @@
-import React from "react";
+import { key } from "localforage";
+import React, { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { FaBookmark, FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
 import { Link, useLoaderData } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const Details = () => {
   const [data] = useLoaderData();
-  const {
-    image,
-    name,
-    ingredients,
-    cooking_method,
-    rating,
-    favorite,
-    specialty,
-  } = data.featured_recipe;
+  const recipies = data.featured_recipe;
+
+  const showMessge = () => {
+    toast("this recipe is added to bookmark");
+  };
+
   return (
     <div>
       <Container className="my-3">
@@ -26,93 +27,60 @@ const Details = () => {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <Card>
-              <Card.Img variant="top" src={image} />
-              <Card.Body>
-                <Card.Title className="fw-bold text-success">{name}</Card.Title>
-                <div className="ingredients">
-                  <p className="text-muted fw-bold my-1">Ingredients :</p>
-                  <ol>
-                    {ingredients.map((item) => (
-                      <li key={data.id}>{item}</li>
-                    ))}
-                  </ol>
-                </div>
-                <div className="cooking">
-                  <p className="text-muted fw-bold my-1">Cooking Method :</p>
-                  <div
-                    className="cooking-method p-2"
-                    style={{ background: "#e4e4e4" }}
-                  >
-                    {cooking_method}
+          {recipies.map((item) => (
+            <Col key={item.id}>
+              <Card>
+                <Card.Img
+                  variant="top"
+                  src={item.image}
+                  style={{ height: "200px", objectFit: "cover" }}
+                />
+                <Card.Body>
+                  <Card.Title className="fw-bold text-success">
+                    {item.name}
+                  </Card.Title>
+                  <div className="ingredients">
+                    <p className="text-muted fw-bold my-1">Ingredients :</p>
+                    <ol>
+                      {item.ingredients.map((ingredient, index) => (
+                        <li key={index}>{ingredient}</li>
+                      ))}
+                    </ol>
                   </div>
-                </div>
-                <div className="d-flex justify-content-between align-items-center mt-3">
-                  <p className="m-0">{rating}</p>
-                  <button>bookmark</button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card>
-              <Card.Img variant="top" src={image} />
-              <Card.Body>
-                <Card.Title className="fw-bold text-success">{name}</Card.Title>
-                <div className="ingredients">
-                  <p className="text-muted fw-bold my-1">Ingredients :</p>
-                  <ol>
-                    {ingredients.map((item) => (
-                      <li key={data.id}>{item}</li>
-                    ))}
-                  </ol>
-                </div>
-                <div className="cooking">
-                  <p className="text-muted fw-bold my-1">Cooking Method :</p>
-                  <div
-                    className="cooking-method p-2"
-                    style={{ background: "#e4e4e4" }}
-                  >
-                    {cooking_method}
+                  <div className="cooking">
+                    <p className="text-muted fw-bold my-1">Cooking Method :</p>
+                    <div
+                      className="cooking-method p-2"
+                      style={{ background: "#e4e4e4" }}
+                    >
+                      {item.cooking_method}
+                    </div>
                   </div>
-                </div>
-                <div className="d-flex justify-content-between align-items-center mt-3">
-                  <p className="m-0">{rating}</p>
-                  <button>bookmark</button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-          <Col>
-            <Card>
-              <Card.Img variant="top" src={image} />
-              <Card.Body>
-                <Card.Title className="fw-bold text-success">{name}</Card.Title>
-                <div className="ingredients">
-                  <p className="text-muted fw-bold my-1">Ingredients :</p>
-                  <ol>
-                    {ingredients.map((item) => (
-                      <li key={data.id}>{item}</li>
-                    ))}
-                  </ol>
-                </div>
-                <div className="cooking">
-                  <p className="text-muted fw-bold my-1">Cooking Method :</p>
-                  <div
-                    className="cooking-method p-2"
-                    style={{ background: "#e4e4e4" }}
-                  >
-                    {cooking_method}
+                  <div className="d-flex justify-content-between align-items-center mt-3">
+                    <p className="m-0 d-flex align-items-center gap-2">
+                      <Rating
+                        readonly
+                        placeholderRating={item.rating}
+                        emptySymbol={<FaRegStar />}
+                        placeholderSymbol={<FaStar />}
+                        fullSymbol={<FaStar />}
+                      />
+                      <span className="mt-1">{item.rating}</span>
+                    </p>
+                    <button
+                      onClick={showMessge}
+                      title="bookmark this recipe"
+                      className="text-dark fs-4"
+                      style={{ background: "none", border: "none" }}
+                    >
+                      <FaBookmark />
+                      <ToastContainer />
+                    </button>
                   </div>
-                </div>
-                <div className="d-flex justify-content-between align-items-center mt-3">
-                  <p className="m-0">{rating}</p>
-                  <button>bookmark</button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
         </Row>
       </Container>
     </div>

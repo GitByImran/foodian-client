@@ -1,0 +1,29 @@
+.feedback-banner {
+    background: url('https://i.ibb.co/F8J1mSz/vegetables-set-left-black-slate.jpg') no-repeat center;
+    background-size: cover;
+    background-color: #0000009d;
+    color: #fff;
+    background-blend-mode: multiply;
+    background-attachment: fixed;
+    padding: 50px 0;
+}
+.special-discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    color: #000;
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+    line-height: 50px;
+    border-radius: 50%;
+}
+.special-discount p {
+    font-size: 70px;
+    font-weight: 700;
+}
+.special-discount span {
+    font-size: 18px;
+}
+

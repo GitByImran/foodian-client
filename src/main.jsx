@@ -4,6 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import StaticRoot from "./components/static-root/StaticRoot";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/home/Home";
 import Blog from "./components/blog/Blog";
 import Contact from "./components/contact/Contact";
