@@ -7,7 +7,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/home/Home";
 import Blog from "./components/blog/Blog";
-import Contact from "./components/contact/Contact";
 import Protected from "./components/protected-route/Protected";
 import Details from "./contents/recipe-details/Details";
 import Register from "./authentication/register/Register";
@@ -29,10 +28,6 @@ const router = createBrowserRouter([
       {
         path: "blog",
         element: <Blog />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
       },
       {
         path: "register",

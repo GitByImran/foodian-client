@@ -20,7 +20,7 @@ const Details = () => {
       <Container className="my-3">
         <Row>
           <Col className="my-3">
-            <Button className="bg-danger">
+            <Button className="bg-dark">
               <Link to="/" className="text-light text-decoration-none">
                 go back
               </Link>

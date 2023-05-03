@@ -1,0 +1,39 @@
+.qna-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+.card {
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 2px 2px 20px #e0e0e0;
+}
+.question {
+    padding: 10px 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(201, 198, 198, 0.267);
+}
+.answer {
+    padding: 0 10px;
+}
+
+.answer > ul {
+    list-style-type: none;
+    text-decoration: none;
+}
+.answer > ul > li {
+    background: #e6e6e6;
+    padding: 5px 10px;
+    margin: 5px 0;
+    display: inline-block;
+}
+
+@media screen and (max-width: 576px) {
+    .qna-content {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+        padding: 0 50px;
+    }
+
+}

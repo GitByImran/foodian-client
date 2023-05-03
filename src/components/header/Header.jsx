@@ -46,7 +46,7 @@ const Header = () => {
               )}
 
               {user ? (
-                <Button onClick={handleLogOut}>
+                <Button onClick={handleLogOut} variant="dark">
                   <Link
                     to="#"
                     className="text-decoration-none text-light nav-menu"
