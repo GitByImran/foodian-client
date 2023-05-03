@@ -5,7 +5,7 @@ import Provider, { AuthContext } from "../provider/Provider";
 
 const Register = () => {
   const [accept, setAccept] = useState(false);
-  const { createUser, user } = useContext(AuthContext);
+  const { createUser, user, updateUserProfile } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -17,8 +17,7 @@ const Register = () => {
     createUser(email, password, name, photoURL)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser);
-        console.log(name);
+        updateUserProfile(name, photoURL);
       })
       .catch((error) => {
         console.log(error);
