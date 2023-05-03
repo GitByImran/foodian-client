@@ -1,12 +1,20 @@
 import React, { useContext } from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import { AuthContext } from "../../authentication/provider/Provider";
-import { HiUserCircle } from "react-icons/hi";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
       <Navbar
@@ -35,14 +43,20 @@ const Header = () => {
             </Nav>
             <Nav className="d-flex gap-3 align-items-center">
               {user && (
-                <Link to="#" className="fs-2 m-0 p-0">
-                  <HiUserCircle />
+                <Link to="#" className="fs-2 m-0 p-0 user-profile">
+                  <img src={user.photoURL} alt="" />
                 </Link>
               )}
+
               {user ? (
-                <Link to="#" className="text-decoration-none nav-menu">
-                  logout
-                </Link>
+                <Button onClick={handleLogOut}>
+                  <Link
+                    to="#"
+                    className="text-decoration-none text-light nav-menu"
+                  >
+                    logout
+                  </Link>
+                </Button>
               ) : (
                 <Link to="/login" className="text-decoration-none nav-menu">
                   login

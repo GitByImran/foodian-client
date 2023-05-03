@@ -1,26 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../provider/Provider";
-// import { HiEye } from "react-icons/hi";
+import { Link, useNavigate } from "react-router-dom";
+import Provider, { AuthContext } from "../provider/Provider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const [accept, setAccept] = useState(false);
+  const { createUser, user } = useContext(AuthContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
+    const name = e.target.displayName.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const photoUrl = e.target.photoUrl.value;
-    console.log(name, email, password, photoUrl);
+    const photoURL = e.target.photoURL.value;
+
+    createUser(email, password, name, photoURL)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        console.log(name);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleAccepted = (event) => {
+    setAccept(event.target.checked);
   };
 
   return (
     <div>
       <Container>
-        <Row>
-          <Col className="my-5">
+        <Row className="my-3">
+          <Col>
             <Form onSubmit={handleRegister} className="w-50 mx-auto p-3 border">
               <Form.Text className="text-muted fs-3 fw-bold">
                 Registration
@@ -28,7 +41,7 @@ const Register = () => {
               <Form.Group className="mb-3 mt-3" controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                  name="name"
+                  name="displayName"
                   type="text"
                   placeholder="Enter name"
                   required
@@ -59,7 +72,7 @@ const Register = () => {
               <Form.Group className="mb-3" controlId="formBasicPhoto">
                 <Form.Label>Photo URL</Form.Label>
                 <Form.Control
-                  name="photoUrl"
+                  name="photoURL"
                   type="text"
                   label="Enter your valid photo url"
                   required
@@ -67,6 +80,7 @@ const Register = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicCheckbox">
                   <Form.Check
+                    onClick={handleAccepted}
                     name="accept"
                     type="checkbox"
                     label="I accept all the terms and condition"
@@ -74,9 +88,19 @@ const Register = () => {
                 </Form.Group>
               </Form.Group>
 
-              <Button variant="primary" type="submit">
-                Submit
+              <Button
+                onClick={handleAfterReg}
+                variant="primary"
+                disabled={!accept}
+                type="submit"
+              >
+                Register
               </Button>
+
+              <Form.Text className="d-block mt-3">
+                {" "}
+                Already have an account ? <Link to="/login"> Login </Link> now
+              </Form.Text>
             </Form>
           </Col>
         </Row>

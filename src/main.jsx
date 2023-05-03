@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./components/home/Home";
 import Blog from "./components/blog/Blog";
 import Contact from "./components/contact/Contact";
+import Protected from "./components/protected-route/Protected";
 import Details from "./contents/recipe-details/Details";
 import Register from "./authentication/register/Register";
 import Login from "./authentication/login/Login";
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "recipe/:id",
-        element: <Details />,
+        element: (
+          <Protected>
+            <Details />
+          </Protected>
+        ),
         loader: ({ params }) =>
           fetch(
             `https://chef-recipe-hunter-server-gitbyimran.vercel.app/recipe/${params.id}`

@@ -35,7 +35,7 @@ const Details = () => {
                   <p className="text-muted fw-bold my-1">Ingredients :</p>
                   <ol>
                     {ingredients.map((item) => (
-                      <li>{item}</li>
+                      <li key={data.id}>{item}</li>
                     ))}
                   </ol>
                 </div>
@@ -64,7 +64,7 @@ const Details = () => {
                   <p className="text-muted fw-bold my-1">Ingredients :</p>
                   <ol>
                     {ingredients.map((item) => (
-                      <li>{item}</li>
+                      <li key={data.id}>{item}</li>
                     ))}
                   </ol>
                 </div>
@@ -93,7 +93,7 @@ const Details = () => {
                   <p className="text-muted fw-bold my-1">Ingredients :</p>
                   <ol>
                     {ingredients.map((item) => (
-                      <li>{item}</li>
+                      <li key={data.id}>{item}</li>
                     ))}
                   </ol>
                 </div>
