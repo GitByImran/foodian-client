@@ -26,7 +26,6 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -38,7 +37,6 @@ const Login = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const getGoogleUser = result.user;
-        console.log(getGoogleUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -50,7 +48,6 @@ const Login = () => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         const getGithubUser = result.user;
-        console.log(getGithubUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {

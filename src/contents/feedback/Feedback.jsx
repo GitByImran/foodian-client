@@ -4,7 +4,7 @@ import "./Feedback.css";
 
 const Feedback = () => {
   return (
-    <div className="feedback-banner my-5">
+    <div className="feedback-banner mt-5">
       <Container>
         <Row>
           <Col className="my-5">
@@ -14,7 +14,7 @@ const Feedback = () => {
             </div>
             <div className="feedback my-5">
               <h2 className="mb-3">Keep up to date with us</h2>
-              <Form className="w-50 d-flex gap-3">
+              <Form className="d-flex gap-3" style={{ maxWidth: "700px" }}>
                 <Form.Control
                   className="p-3 fs-5"
                   type="text"
