@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Provider, { AuthContext } from "../provider/Provider";
+import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
   const [accept, setAccept] = useState(false);
@@ -26,6 +27,10 @@ const Register = () => {
 
   const handleAccepted = (event) => {
     setAccept(event.target.checked);
+  };
+
+  const goto = () => {
+    toast("successfull login...! go to login page");
   };
 
   return (
@@ -77,7 +82,7 @@ const Register = () => {
                   required
                 />
 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Group className="mb-3 mt-3" controlId="formBasicCheckbox">
                   <Form.Check
                     onClick={handleAccepted}
                     name="accept"
@@ -87,12 +92,18 @@ const Register = () => {
                 </Form.Group>
               </Form.Group>
 
-              <Button variant="primary" disabled={!accept} type="submit">
+              <Button
+                onClick={goto}
+                variant="primary"
+                disabled={!accept}
+                type="submit"
+              >
                 Register
               </Button>
 
-              <Form.Text className="d-block mt-3">
+              <Form.Text className="d-block mt-3 fs-5">
                 {" "}
+                <ToastContainer />
                 Already have an account ? <Link to="/login"> Login </Link> now
               </Form.Text>
             </Form>

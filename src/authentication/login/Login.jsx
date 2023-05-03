@@ -93,7 +93,7 @@ const Login = () => {
                 Log in
               </Button>
 
-              <Form.Text className="d-block mt-3">
+              <Form.Text className="d-block mt-3 fs-5">
                 {" "}
                 Don't have an account ? <Link to="/register"> Register</Link>
               </Form.Text>

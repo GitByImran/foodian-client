@@ -37,9 +37,6 @@ const Header = () => {
               <Link to="/blog" className="text-decoration-none nav-menu">
                 blog
               </Link>
-              <Link to="/contact" className="text-decoration-none nav-menu">
-                contact
-              </Link>
             </Nav>
             <Nav className="d-flex gap-3 align-items-center">
               {user && (

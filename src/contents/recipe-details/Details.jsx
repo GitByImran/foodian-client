@@ -2,9 +2,10 @@ import { key } from "localforage";
 import React, { useState } from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import { FaBookmark, FaRegStar, FaStar } from "react-icons/fa";
-import Rating from "react-rating";
+import { Rating } from "@smastrom/react-rating";
 import { Link, useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import "@smastrom/react-rating/style.css";
 
 const Details = () => {
   const [data] = useLoaderData();
@@ -57,16 +58,14 @@ const Details = () => {
                     </div>
                   </div>
                   <div className="d-flex justify-content-between align-items-center mt-3">
-                    <p className="m-0 d-flex align-items-center gap-2">
+                    <div className="m-0 d-flex align-items-center gap-2">
                       <Rating
+                        style={{ maxWidth: 100 }}
+                        value={Math.round(item.rating)}
                         readonly
-                        placeholderRating={item.rating}
-                        emptySymbol={<FaRegStar />}
-                        placeholderSymbol={<FaStar />}
-                        fullSymbol={<FaStar />}
                       />
                       <span className="mt-1">{item.rating}</span>
-                    </p>
+                    </div>
                     <button
                       onClick={showMessge}
                       title="bookmark this recipe"
