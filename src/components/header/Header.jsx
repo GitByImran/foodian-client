@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { AuthContext } from "../../authentication/provider/Provider";
+import { HiUserCircle } from "react-icons/hi";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <Navbar
@@ -30,8 +33,21 @@ const Header = () => {
                 contact
               </Link>
             </Nav>
-            <Nav>
-              <Nav.Link href="#profile">profile</Nav.Link>
+            <Nav className="d-flex gap-3 align-items-center">
+              {user && (
+                <Link to="#" className="fs-2 m-0 p-0">
+                  <HiUserCircle />
+                </Link>
+              )}
+              {user ? (
+                <Link to="#" className="text-decoration-none nav-menu">
+                  logout
+                </Link>
+              ) : (
+                <Link to="/login" className="text-decoration-none nav-menu">
+                  login
+                </Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -41,5 +57,3 @@ const Header = () => {
 };
 
 export default Header;
-
-// https://i.ibb.co/CBsLZ9Z/pexels-photo-3218467.jpg  -> cover photo
