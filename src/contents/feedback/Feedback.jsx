@@ -4,7 +4,7 @@ import "./Feedback.css";
 
 const Feedback = () => {
   return (
-    <div className="feedback-banner">
+    <div className="feedback-banner my-5">
       <Container>
         <Row>
           <Col className="my-5">

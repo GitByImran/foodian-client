@@ -13,6 +13,7 @@ import Details from "./contents/recipe-details/Details";
 import Register from "./authentication/register/Register";
 import Login from "./authentication/login/Login";
 import Provider from "./authentication/provider/Provider";
+import Error from "./components/error-page/Error";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
           fetch(
             `https://chef-recipe-hunter-server-gitbyimran.vercel.app/recipe/${params.id}`
           ),
+      },
+      {
+        path: "*",
+        element: <Error />,
       },
     ],
   },

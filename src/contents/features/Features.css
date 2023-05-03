@@ -1,0 +1,26 @@
+.features-banner {
+    background: url('https://i.ibb.co/nnpX23T/image.png') no-repeat center;
+    background-size: cover;
+    background-color: #0000009d;
+    color: #fff;
+    background-blend-mode: multiply;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.feature-item {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: #5c5c5c4f;
+}
+.feature-item-img {
+    font-size: 50px;
+}
+.feature-item-text{
+    text-transform: capitalize;
+}
