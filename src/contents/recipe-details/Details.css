@@ -3,3 +3,18 @@
     height: 250px;
     object-fit: cover;
 }
+@media screen and (max-width:576px) {
+    .chef-profile-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+    .chef-profile {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .recipe-list {
+        display: flex;
+        flex-direction: column;
+    }
+}

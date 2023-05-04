@@ -33,9 +33,9 @@ const Details = () => {
             <ToastContainer />
           </Col>
         </Row>
-        <Row className="chef-profile">
+        <Row className="">
           <Col className="my-3">
-            <Card className="d-flex flex-row align-items-center gap-3">
+            <Card className="d-flex flex-row align-items-center gap-3 chef-profile">
               <Card.Img
                 variant="top"
                 src={data.picture}
@@ -61,7 +61,7 @@ const Details = () => {
             </Card>
           </Col>
         </Row>
-        <Row>
+        <Row className="recipe-list">
           {recipies.map((item) => (
             <Col key={item.id}>
               <Card>
