@@ -29,7 +29,7 @@ const Register = () => {
   };
 
   if (userFound) {
-    toast("successfull login...! go to login page");
+    toast("successfull Register...! go to login page", userFound);
     setTimeout((userNotFound) => {
       navigate("/login");
     }, 3000);

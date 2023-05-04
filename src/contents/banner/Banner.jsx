@@ -11,7 +11,11 @@ const Banner = () => {
           <Col className="pt-5 pb-3">
             <div className="banner-content py-5 text-center">
               <div className="banner-content-img text-center">
-                <img src="https://i.ibb.co/VDrvx2j/Untitled-1.png" alt="" />
+                <img
+                  style={{ maxWidth: "350px" }}
+                  src="https://i.ibb.co/VDrvx2j/Untitled-1.png"
+                  alt=""
+                />
               </div>
               <div className="banner-content-text pt-5 pb-5 text-center">
                 <h2 className="text-center">One Step to Making a Good Start</h2>

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/Provider";
@@ -7,11 +7,14 @@ import {
   GithubAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const { signIn, auth, googleRegister } = useContext(AuthContext);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -27,9 +30,10 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         navigate(from, { replace: true });
+        setError("");
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
 
@@ -39,9 +43,7 @@ const Login = () => {
         const getGoogleUser = result.user;
         navigate(from, { replace: true });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
 
   const handleGithub = () => {
@@ -50,12 +52,10 @@ const Login = () => {
         const getGithubUser = result.user;
         navigate(from, { replace: true });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   };
   return (
-    <div>
+    <div style={{ height: "80vh" }}>
       <Container>
         <Row>
           <Col className="my-5">
@@ -83,9 +83,8 @@ const Login = () => {
                 {/* <HiEye></HiEye> */}
               </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check name="accept" type="checkbox" label="Remember me" />
-              </Form.Group>
+              <p className="my-3">{error.slice(10)}</p>
+
               <Button variant="primary" type="submit">
                 Log in
               </Button>
@@ -97,8 +96,13 @@ const Login = () => {
             </Form>
           </Col>
           <Col className="d-flex flex-column justify-content-center align-items-center gap-3">
-            <Button onClick={handleGoogle}>sign up with google</Button>
-            <Button onClick={handleGithub}>sign up with github</Button>
+            <div>OR --- </div>
+            <Button onClick={handleGoogle}>
+              <FaGithub className="me-2" /> sign up with google
+            </Button>
+            <Button onClick={handleGithub}>
+              <FaGoogle className="me-2" /> sign up with github
+            </Button>
           </Col>
         </Row>
       </Container>

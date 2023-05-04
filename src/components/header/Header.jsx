@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 import { AuthContext } from "../../authentication/provider/Provider";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
-
 
   const handleLogOut = () => {
     logOut()
@@ -31,14 +30,27 @@ const Header = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto ms-auto d-flex gap-3">
-              <Link to="/" className="text-decoration-none nav-menu">
+              <NavLink
+                to="/"
+                style={(isActive) => ({
+                  color: isActive ? "active" : "",
+                })}
+                className="text-decoration-none nav-menu"
+              >
                 home
-              </Link>
-              <Link to="/blog" className="text-decoration-none nav-menu">
+              </NavLink>
+              <NavLink
+                to="/blog"
+                style={(isActive) => ({
+                  color: isActive ? "active" : "",
+                })}
+                className="text-decoration-none nav-menu"
+              >
                 blog
-              </Link>
+              </NavLink>
             </Nav>
-            <Nav className="d-flex gap-3 align-items-center">
+
+            <Nav className="d-flex gap-3 align-items-center mt-3 authenticate">
               {user && (
                 <Link to="#" className="fs-2 m-0 p-0 user-profile">
                   <img src={user.photoURL} alt="" />
@@ -55,9 +67,15 @@ const Header = () => {
                   </Link>
                 </Button>
               ) : (
-                <Link to="/login" className="text-decoration-none nav-menu">
+                <NavLink
+                  to="/login"
+                  style={(isActive) => ({
+                    color: isActive ? "active" : "",
+                  })}
+                  className="text-decoration-none nav-menu"
+                >
                   login
-                </Link>
+                </NavLink>
               )}
             </Nav>
           </Navbar.Collapse>
