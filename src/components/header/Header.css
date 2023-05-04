@@ -13,7 +13,7 @@
   border-radius: 50%;
   overflow: hidden;
 }
-.user-profile img{
+.user-profile img {
   height: 100%;
   width: 100%;
   object-fit: contain;
@@ -24,8 +24,27 @@
 .inactive {
   color: #000;
 }
+.authenticate {
+  position: relative;
+}
+.user-details {
+  display: none;
+}
+.user-profile:hover ~ .user-details {
+  line-height: 25px;
+  padding: 10px 20px;
+  position: absolute;
+  top: 55px;
+  height: 100px;
+  left: -100px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @media screen and (max-width: 568px) {
-  .d-flex.gap-3.align-items-center.mt-3.authenticate.navbar-nav{
+  .d-flex.gap-3.align-items-center.mt-3.authenticate.navbar-nav {
     align-items: flex-start !important;
   }
   .all-recipe.pb-5.col {

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import "./Login.css";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/Provider";
@@ -14,7 +15,6 @@ const githubProvider = new GithubAuthProvider();
 
 const Login = () => {
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
   const { signIn, auth, googleRegister } = useContext(AuthContext);
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -55,9 +55,9 @@ const Login = () => {
       .catch((error) => {});
   };
   return (
-    <div style={{ height: "80vh" }}>
+    <div className="login">
       <Container>
-        <Row>
+        <Row className="login-contents">
           <Col className="my-5">
             <Form onSubmit={handleLogin} className="w-100 mx-auto p-3 border">
               <Form.Text className="text-muted fs-3 fw-bold">Login</Form.Text>
@@ -83,7 +83,7 @@ const Login = () => {
                 {/* <HiEye></HiEye> */}
               </Form.Group>
 
-              <p className="my-3">{error.slice(10)}</p>
+              <p className="my-3 text-danger">{error.slice(10)}</p>
 
               <Button variant="primary" type="submit">
                 Log in
@@ -96,7 +96,6 @@ const Login = () => {
             </Form>
           </Col>
           <Col className="d-flex flex-column justify-content-center align-items-center gap-3">
-            <div>OR --- </div>
             <Button onClick={handleGoogle}>
               <FaGithub className="me-2" /> sign up with google
             </Button>

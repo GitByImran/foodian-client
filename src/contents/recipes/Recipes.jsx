@@ -19,7 +19,7 @@ const Recipes = () => {
         </div>
         <Row>
           <Col className="all-recipe pb-5">
-            {allRecipies.slice(0, recipies).map((data) => (
+            {allRecipies?.slice(0, recipies).map((data) => (
               <Recipe key={data.id} data={data}></Recipe>
             ))}
           </Col>

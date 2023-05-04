@@ -13,65 +13,72 @@ import {
 
 const Features = () => {
   return (
-    <div className="features-banner my-5">
-      <Container className="my-5">
-        <Row className="d-flex flex-column gap-3">
-          <div className="text-muted" style={{ textAlign: "right" }}>
-            <h1>What's about snacks ...!</h1>
-          </div>
-          <Col className="d-flex justify-content-end gap-3">
-            <div className="feature-item">
-              <div className="feature-item-img">
-                <FaIceCream></FaIceCream>
-              </div>
-              <div className="feature-item-text">
-                <h2>Ice Cream</h2>
-              </div>
+    <div>
+      <div className="features-banner my-5">
+        <Container className="my-5">
+          <Row className="d-flex flex-column gap-3">
+            <div className="text-muted" style={{ textAlign: "right" }}>
+              <h1>What's about snacks ...!</h1>
             </div>
-            <div className="feature-item">
-              <div className="feature-item-img">
-                <FaCocktail></FaCocktail>
+            <Col className="d-flex justify-content-end gap-3">
+              <div className="feature-item">
+                <div className="feature-item-img">
+                  <FaIceCream></FaIceCream>
+                </div>
+                <div className="feature-item-text">
+                  <h2>Ice Cream</h2>
+                </div>
               </div>
-              <div className="feature-item-text">
-                <h2>Cocktail</h2>
+              <div className="feature-item">
+                <div className="feature-item-img">
+                  <FaCocktail></FaCocktail>
+                </div>
+                <div className="feature-item-text">
+                  <h2>Cocktail</h2>
+                </div>
               </div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-item-img">
-                <FaHamburger></FaHamburger>
+              <div className="feature-item">
+                <div className="feature-item-img">
+                  <FaHamburger></FaHamburger>
+                </div>
+                <div className="feature-item-text">
+                  <h2>Burger</h2>
+                </div>
               </div>
-              <div className="feature-item-text">
-                <h2>Burger</h2>
+            </Col>
+            <Col className="d-flex d-flex justify-content-end gap-3">
+              <div className="feature-item">
+                <div className="feature-item-img">
+                  <FaPizzaSlice></FaPizzaSlice>
+                </div>
+                <div className="feature-item-text">
+                  <h2>Pizza</h2>
+                </div>
               </div>
-            </div>
-          </Col>
-          <Col className="d-flex d-flex justify-content-end gap-3">
-            <div className="feature-item">
-              <div className="feature-item-img">
-                <FaPizzaSlice></FaPizzaSlice>
+              <div className="feature-item">
+                <div className="feature-item-img">
+                  <FaBirthdayCake></FaBirthdayCake>
+                </div>
+                <div className="feature-item-text">
+                  <h2>Cake</h2>
+                </div>
               </div>
-              <div className="feature-item-text">
-                <h2>Pizza</h2>
+              <div className="feature-item">
+                <div className="feature-item-img">
+                  <FaSoap></FaSoap>
+                </div>
+                <div className="feature-item-text">
+                  <h2>soap</h2>
+                </div>
               </div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-item-img">
-                <FaBirthdayCake></FaBirthdayCake>
-              </div>
-              <div className="feature-item-text">
-                <h2>Cake</h2>
-              </div>
-            </div>
-            <div className="feature-item">
-              <div className="feature-item-img">
-                <FaSoap></FaSoap>
-              </div>
-              <div className="feature-item-text">
-                <h2>soap</h2>
-              </div>
-            </div>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <Container>
+        <h2 className="my-3 text-center fs-1 fw-bold text-muted">
+          Let's make a deal
+        </h2>
       </Container>
     </div>
   );

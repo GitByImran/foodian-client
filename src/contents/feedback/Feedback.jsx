@@ -14,7 +14,10 @@ const Feedback = () => {
             </div>
             <div className="feedback my-5">
               <h2 className="mb-3">Keep up to date with us</h2>
-              <Form className="d-flex gap-3" style={{ maxWidth: "700px" }}>
+              <Form
+                className="d-flex gap-3 feedback-form"
+                style={{ maxWidth: "700px" }}
+              >
                 <Form.Control
                   className="p-3 fs-5"
                   type="text"

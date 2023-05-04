@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const Recipe = (data) => {
@@ -8,7 +9,9 @@ const Recipe = (data) => {
     <>
       <div className="recipe-content">
         <Card>
-          <Card.Img variant="top" src={picture} className="chef-image" />
+          <LazyLoad>
+            <Card.Img variant="top" src={picture} className="chef-image" />
+          </LazyLoad>
           <Card.Body>
             <Card.Title>
               <h3 className="fw-bold my-3">{name}</h3>

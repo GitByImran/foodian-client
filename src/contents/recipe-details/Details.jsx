@@ -12,8 +12,11 @@ const Details = () => {
   const [data] = useLoaderData();
   const recipies = data.featured_recipe;
 
-  const showMessge = () => {
+  const [bookmarked, setBookmarked] = useState(false);
+
+  const showMessge = (id) => {
     toast("this recipe is added to bookmark");
+    setBookmarked(true);
   };
 
   return (
@@ -98,6 +101,7 @@ const Details = () => {
                     </div>
                     <button
                       onClick={showMessge}
+                      disabled={bookmarked}
                       title="bookmark this recipe"
                       className="text-dark fs-4"
                       style={{ background: "none", border: "none" }}

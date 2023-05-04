@@ -26,4 +26,7 @@
 .special-discount span {
     font-size: 18px;
 }
+.feedback-form {
+    flex-direction: column !important;
+}
 

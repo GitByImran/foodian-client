@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import "./Register.css";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import Provider, { AuthContext } from "../provider/Provider";
@@ -6,6 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
   const [accept, setAccept] = useState(false);
+  const [error, setError] = useState("");
+
   const { createUser, userFound, userNotFound, updateUserProfile } =
     useContext(AuthContext);
 
@@ -22,9 +25,10 @@ const Register = () => {
       .then((result) => {
         const createdUser = result.user;
         updateUserProfile(name, photoURL);
+        setError("");
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
 
@@ -44,7 +48,10 @@ const Register = () => {
       <Container>
         <Row className="my-3">
           <Col>
-            <Form onSubmit={handleRegister} className="w-50 mx-auto p-3 border">
+            <Form
+              onSubmit={handleRegister}
+              className="w-50 mx-auto p-3 border register-form"
+            >
               <Form.Text className="text-muted fs-3 fw-bold">
                 Registration
               </Form.Text>
@@ -78,6 +85,8 @@ const Register = () => {
                 />
                 {/* <HiEye></HiEye> */}
               </Form.Group>
+
+              <p className="my-3 text-danger">{error.slice(10)}</p>
 
               <Form.Group className="mb-3" controlId="formBasicPhoto">
                 <Form.Label>Photo URL</Form.Label>
