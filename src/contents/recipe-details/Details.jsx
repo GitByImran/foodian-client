@@ -25,6 +25,7 @@ const Details = () => {
                 go back
               </Link>
             </Button>
+            <ToastContainer />
           </Col>
         </Row>
         <Row>
@@ -73,7 +74,6 @@ const Details = () => {
                       style={{ background: "none", border: "none" }}
                     >
                       <FaBookmark />
-                      <ToastContainer />
                     </button>
                   </div>
                 </Card.Body>

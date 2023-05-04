@@ -17,7 +17,11 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const Provider = ({ children }) => {
+
   const [user, setUser] = useState(null);
+
+  const [userFound, setUserFound] = useState(false);
+  const [userNotFound, setUserNotFound] = useState(false);
 
   const [loading, setLoading] = useState(true);
 
@@ -47,6 +51,7 @@ const Provider = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
+    setUserNotFound(true);
     return signOut(auth);
   };
 
@@ -54,6 +59,9 @@ const Provider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (loggedUser) => {
       setUser(loggedUser);
       setLoading(false);
+      if (loggedUser) {
+        setUserFound(true);
+      }
     });
     return () => {
       unsubscribe();
@@ -73,6 +81,8 @@ const Provider = ({ children }) => {
     loading,
     googleRegister,
     updateUserProfile,
+    userFound,
+    userNotFound,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

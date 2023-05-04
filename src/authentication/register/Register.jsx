@@ -6,7 +6,10 @@ import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
   const [accept, setAccept] = useState(false);
-  const { createUser, user, updateUserProfile } = useContext(AuthContext);
+  const { createUser, userFound, userNotFound, updateUserProfile } =
+    useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -25,12 +28,15 @@ const Register = () => {
       });
   };
 
+  if (userFound) {
+    toast("successfull login...! go to login page");
+    setTimeout((userNotFound) => {
+      navigate("/login");
+    }, 3000);
+  }
+
   const handleAccepted = (event) => {
     setAccept(event.target.checked);
-  };
-
-  const goto = () => {
-    toast("successfull login...! go to login page");
   };
 
   return (
@@ -92,22 +98,17 @@ const Register = () => {
                 </Form.Group>
               </Form.Group>
 
-              <Button
-                onClick={goto}
-                variant="primary"
-                disabled={!accept}
-                type="submit"
-              >
+              <Button variant="primary" disabled={!accept} type="submit">
                 Register
               </Button>
 
               <Form.Text className="d-block mt-3 fs-5">
                 {" "}
-                <ToastContainer />
                 Already have an account ? <Link to="/login"> Login </Link> now
               </Form.Text>
             </Form>
           </Col>
+          <ToastContainer />
         </Row>
       </Container>
     </div>
