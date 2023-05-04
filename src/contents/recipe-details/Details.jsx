@@ -11,12 +11,13 @@ import "./Details.css";
 const Details = () => {
   const [data] = useLoaderData();
   const recipies = data.featured_recipe;
+  const [bookmarks, setBookmarks] = useState([]);
 
-  const [bookmarked, setBookmarked] = useState(false);
-
-  const showMessge = (id) => {
-    toast("this recipe is added to bookmark");
-    setBookmarked(true);
+  const handleBookmark = (id) => {
+    if (!bookmarks.includes(id)) {
+      setBookmarks((prevBookmarks) => [...prevBookmarks, id]);
+      toast("this recipe is added to bookmark");
+    }
   };
 
   return (
@@ -100,8 +101,7 @@ const Details = () => {
                       <span className="mt-1">{item.rating}</span>
                     </div>
                     <button
-                      onClick={showMessge}
-                      disabled={bookmarked}
+                      onClick={() => handleBookmark(item.id)}
                       title="bookmark this recipe"
                       className="text-dark fs-4"
                       style={{ background: "none", border: "none" }}
