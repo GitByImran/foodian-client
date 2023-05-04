@@ -1,11 +1,26 @@
 import React from "react";
 import "./Blog.css";
 import { Button, Container } from "react-bootstrap";
+import jsPDF from "jspdf";
+
 
 const Blog = () => {
+
+  const handleGeneratePdf = () => {
+		const doc = new jsPDF({
+			format: 'a4',
+			unit: 'px',
+		});
+    doc.html(reportTemplateRef.current, {
+			async callback(doc) {
+				doc.save('document');
+			},
+		});
   return (
     <div>
-
+      <button className="button" onClick={handleGeneratePdf}>
+        Generate PDF
+      </button>
       <Container>
         <div className="section-container my-5" style={{ fontSize: "16px" }}>
           <div style={{ marginBottom: "50px" }}>
