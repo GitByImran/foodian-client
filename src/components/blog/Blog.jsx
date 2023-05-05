@@ -1,28 +1,43 @@
 import React from "react";
 import "./Blog.css";
 import { Button, Container } from "react-bootstrap";
+import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-
+import { useState } from "react";
 
 const Blog = () => {
-
-  const handleGeneratePdf = () => {
-		const doc = new jsPDF({
-			format: 'a4',
-			unit: 'px',
-		});
-    doc.html(reportTemplateRef.current, {
-			async callback(doc) {
-				doc.save('document');
-			},
-		});
+  const [loading, setLoaading] = useState(false);
+  const genPdf = () => {
+    setLoaading(true);
+    const capture = document.querySelector("#blogContent");
+    html2canvas(capture, {
+      width: 1400,
+      height: 1400,
+      scrollY: 0,
+      scrollX: 0,
+      logging: true,
+      useCORS: true, // add this option to enable CORS
+      backgroundColor: "#FFFFFF",
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png", 1.0);
+      const pdf = new jsPDF("p", "pt", "a4");
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pdfWidth;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      const imgX = (pdfWidth - imgWidth) / 2; // calculate X position
+      pdf.addImage(imgData, "PNG", imgX, 0, imgWidth, imgHeight);
+      setLoaading(false);
+      pdf.save("blogs.pdf");
+    });
+  };
   return (
-    <div>
-      <button className="button" onClick={handleGeneratePdf}>
-        Generate PDF
-      </button>
-      <Container>
-        <div className="section-container my-5" style={{ fontSize: "16px" }}>
+    <div className="text-center">
+      <Button onClick={genPdf} className="mt-4 mb-1">
+        {loading ? "generating..." : "generate pdf"}
+      </Button>
+      <Container id="blogContent">
+        <div className="section-container my-2" style={{ fontSize: "16px" }}>
           <div style={{ marginBottom: "50px" }}>
             <div className="qna-content">
               <div className="card">
