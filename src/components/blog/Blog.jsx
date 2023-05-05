@@ -4,6 +4,7 @@ import { Button, Container } from "react-bootstrap";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 const Blog = () => {
   const [loading, setLoaading] = useState(false);
@@ -28,7 +29,9 @@ const Blog = () => {
       const imgX = (pdfWidth - imgWidth) / 2; // calculate X position
       pdf.addImage(imgData, "PNG", imgX, 0, imgWidth, imgHeight);
       setLoaading(false);
+
       pdf.save("blogs.pdf");
+      toast("blogs.pdf downloaded, check your download on file manager");
     });
   };
   return (
@@ -36,6 +39,7 @@ const Blog = () => {
       <Button onClick={genPdf} className="mt-4 mb-1">
         {loading ? "generating..." : "generate pdf"}
       </Button>
+      <ToastContainer />
       <Container id="blogContent">
         <div className="section-container my-2" style={{ fontSize: "16px" }}>
           <div style={{ marginBottom: "50px" }}>
